@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"  type="text/css" href="style.css">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
+}
+.bk-img1{
+    
+  background-image:url('{% static "up.jpg"%}');
+  height: 100vh;
+  background-size:cover;
+  background-repeat:no-repeat;
+  
+}
+
+{
+
+}
+
+.container {
+  padding: 100px;
+  background-color: rgb(198, 165, 165);
+}
+
+
+input[type=text], input[type=first_name] {
+  	height:30px;
+	width:50%;
+  padding: 15px;
+  margin: 5px 0 20px 0;
+  display: inline-block;
+  border-radius: 10px;
+  background: #867575;
+  border
+}
+
+input[type=text], input[type=last_name] {
+  height:30px;
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 20px 0;
+  display: inline-block;
+  border: none;
+  background: #9a8888;
+  border-radius: 10px;
+}
+
+input[type=text], input[type=password] {
+  height:30px;
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 20px 0;
+  display: inline-block;
+  border: none;
+  background: #958686;
+  border-radius: 10px;
+}
+
+input[type=number], input[type=number] {
+  height:30px;
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 20px 0;
+  display: inline-block;
+  border: none;
+  background: #958686;
+  border-radius: 10px;
+}
+
+input[type=email], input[type=email] {
+  height:30px;
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 20px 0;
+  display: inline-block;
+  border: none;
+  background: #958686;
+  border-radius: 10px;
+}
+
+input[type=password], input[type=password] {
+  height:30px;
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 20px 0;
+  display: inline-block;
+  border: none;
+  background: #958686;
+  border-radius: 10px;
+}
+
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: rgb(201, 185, 185);
+  outline: none;
+}
+
+
+
+hr {
+  border: 1px solid #8d2121;
+  margin-bottom: 25px;
+}
+
+
+.registerbtn {
+  background-color: black;
+  color: white;
+  align  :center;
+  padding: 16px 60px;
+  margin: 8px 0;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 30% 60%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+a {
+  color: rgb(34, 37, 40);
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #eb1616;
+  text-align;
+}
+</style>
+</head>
+{% load static %}
+<body  class="bk-img1">
+
+<form action="#" method="post">
+  {% csrf_token %}
+  <div class="container">
+  <center><h1>REGISTER YOUR ACCOUNT</h1></center>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+	<label for="text"><b>First name</b></label>
+    <input type="text" placeholder="Enter name" name="first_name" required>
+	
+
+
+	<label for="text"><b>last name</b></label>
+    <input type="text" placeholder="Enter name" name="last_name"required><br>
+
+
+    <label for="number"><b>Rollno</b></label><br>
+
+    
+    <input type="number" placeholder="Enter rollno" name="roll_no" required><br>
+
+
+    <label for="text"><b>Class</b></label>
+    <input type="text" placeholder="Enter class" name="class" required><br>
+
+
+
+
+
+    <label for="email"><b>Email</b></label>
+    <input type="email" placeholder="Enter Email" name="email" required ><br>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required >
+   {% for message in messages %}
+   <script>
+    window.onload=function()
+    {
+      alert('{{message}}')
+    }
+  </script>
+  {% endfor %}
+
+    
+
+	
+
+    <hr>
+    <p>By creating an account you agree to our <a href="">Terms & Privacy</a>.</p>
+
+    <center><button type="submit" class="registerbtn">Register</button></center>
+  </div>
+  
+  <div class="container signin">
+    <p>Already have an account? <a href="http://localhost:8000/login/">Sign in</a>.</p>
+  </div>
+</form>
+
+</body>
+</html>
+
+ 
