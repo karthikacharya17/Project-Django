@@ -1,31 +1,33 @@
-import email
 from sqlite3 import Cursor
-from django.contrib import messages
-from django.http import HttpResponse
-from django.shortcuts import render,redirect
+from django.shortcuts import render
 import mysql.connector as sql
+from django.contrib import messages
 from signup.models import signup
 
 
+
+
 # Create your views here.
-def  loginaction(request):
-    
+def  signaction(request):
     if request.method=="POST":
-        lemail=request.POST.get('email',False)
-        lpsw=request.POST.get('password',False)
-        if (lemail=='jk@gmail.com'and lpsw=='12345678'):
-            return redirect('http://localhost:8000/adminpage/')
+        fname=request.POST.get('first_name',False)
+        lname=request.POST.get('last_name',False)
+        rno=request.POST.get('roll_no',False)
+        clas=request.POST.get('class',False)
+        semail=request.POST.get('email',False)
+        spas=request.POST.get('password',False)
+        if signup.objects.filter(email=semail).exists():
+            messages.info(request,'THIS EMAIL ALREDY EXIST!!!!')
+        
+
         else:
-            if signup.objects.filter(email=lemail).exists() and signup.objects.filter(password=lpsw).exists():
-                request.session['email']=lemail
-                
-                return redirect('http://localhost:8000/user/')
-            else:
-                 messages.success(request,"please enter correct password")
+             ins=signup( firstname=fname,lastname=lname,rollno=rno,classs=clas,email=semail,password=spas)
+             ins.save()
+             messages.success(request,"Successfully Registered")
+    
 
+        
+        
 
-
-            
-
-    return render(request,'login_page.html')
+    return render(request,'signup_page.html')
             
